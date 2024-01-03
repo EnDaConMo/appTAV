@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +15,7 @@ export class LoginPage implements OnInit {
   }
 
   field:string;
-  toastController: any;
-  constructor() { }
+  constructor(public toastController:ToastController, public router:Router) { }
 
   ngOnInit() {
   }
@@ -22,7 +23,13 @@ export class LoginPage implements OnInit {
   ingresar(){
     console.log(this.user);
     if(this.validateModel(this.user)){
-      this.presentToast('middle', 'Bienvenido ' +this.user.usuario, 2000);
+      this.presentToast('top', 'Bienvenido ' +this.user.usuario, 2000);
+      let navigationExtras: NavigationExtras = {
+        state:{
+          user: this.user //se asgina usuario y contrseña
+        }
+      }
+      this.router.navigate(['/home'], navigationExtras);
     }else{ 
       this.presentToast('middle', 'El campo '+this.field+' es requerido', 3000);
     }
