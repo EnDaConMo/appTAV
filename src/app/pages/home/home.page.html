@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="Register">
+      Register
+    </ion-title>
+    <ion-title class="DuocUC">
+      DuocUC
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
+    <ion-card-header>
+      <ion-card-title>Registrar asistencia</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Abre la camara de celular y escanea el codigo QR para registrar tu asistencia.
+    </ion-card-content>
+  </ion-card>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
