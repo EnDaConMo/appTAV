@@ -35,6 +35,10 @@ export class LoginPage implements OnInit {
     }
   }
 
+  recuperar(){
+    this.router.navigate(['/recuperar']);
+  }
+
  /*
  Validar usuario y contraseña  
  */

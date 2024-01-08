@@ -21,3 +21,31 @@ ion-card-title{
     text-align: center;
     text-shadow: 1px 1px 2px #919191;
 }
+
+h1{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: darkblue;
+    text-align: center;
+    text-shadow: 1px 1px 2px #919191;
+}
+
+p{
+    font-size: 0.5m;
+    font-weight: bold;
+    color: darkblue;
+    text-align: center;
+    text-shadow: 1px 1px 2px #919191;
+}
+
+ion-alert{
+    padding: 8px;
+}
+
+ion-alert.logoffAlert{
+    font-size: 1em;
+    font-weight: bold;
+    color: darkblue;
+    text-align: center;
+    text-shadow: 1px 1px 2px #919191;
+}
