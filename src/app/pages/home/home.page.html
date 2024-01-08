@@ -16,7 +16,7 @@
   <h1 *ngIf="data">
     Hola {{data.usuario}}
   </h1>
-  <ion-card>
+  <ion-card (click)="rotar()">
     <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
     <ion-card-header>
       <ion-card-title>Registrar asistencia</ion-card-title>
@@ -26,7 +26,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card (click)="parar()">
     <img alt="Horario de clases" src="assets/images/horario.png">
     <ion-card-header>
       <ion-card-title>Horario</ion-card-title>

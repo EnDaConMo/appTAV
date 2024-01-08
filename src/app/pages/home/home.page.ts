@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent } from '@ionic/angular';
+import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { IonContent } from '@ionic/angular';
 })
 export class HomePage {
   data: any
-  constructor(private activatedRouter: ActivatedRoute, private router: Router) {
+  constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
     this.activatedRouter.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.data = this.router.getCurrentNavigation()?.extras.state?.["user"];
@@ -20,9 +21,9 @@ export class HomePage {
     });
   }
 
-  @ViewChild(IonContent, {static:false}) content: IonContent;
+  @ViewChild(IonContent, { static: false }) content: IonContent;
 
-  scrollTop(){
+  scrollTop() {
     this.content.scrollToTop(500);
   }
 
@@ -34,16 +35,46 @@ export class HomePage {
     {
       text: 'Si',
       cssClass: 'alertaSi',
-      handler: () =>{
+      handler: () => {
         this.logoff();
       }
     },
     {
-      text:'No',
+      text: 'No',
       cssClass: 'alertaNo',
-      handler: () =>{
+      handler: () => {
         console.log('No');
       }
     }
   ]
+
+  @ViewChildren(IonCard, { read: ElementRef }) cardElements: QueryList<ElementRef<HTMLIonCardElement>>;
+
+  public animation: Animation;
+
+  ngAfterViewInit() {
+
+    this.animation = this.animationCtrl
+      .create()
+      .addElement(this.cardElements.get(0)!.nativeElement)
+      .duration(1000)
+      .iterations(Infinity)
+      .keyframes([
+        { offset: 0, transform: 'scale(1) rotate(0)' },
+        { offset: 0, transform: 'scale(1) rotate(360deg)' },
+        { offset: 1, transform: 'scale(1) rotate(0) ' },
+      ]);
+  }
+
+  rotar(){
+    this.animation.play();
+  }
+
+  parar(){
+    this.animation.stop();
+  }
+
+
+
+
 }
