@@ -10,7 +10,7 @@ import { ToastController } from '@ionic/angular';
 export class RecuperarPage implements OnInit {
 
   user={
-    usuario:"",
+    email:"",
   }
 
   field:string;
@@ -22,10 +22,10 @@ export class RecuperarPage implements OnInit {
   recuperar(){
     console.log(this.user);
     if(this.validateModel(this.user)){
-      this.presentToast('middle', 'Contrseña recuperada, ' +this.user.usuario, 2000);
+      this.presentToast('middle', 'Contrseña recuperada', 2000);
       let navigationExtras: NavigationExtras = {
         state:{
-          user: this.user //se asgina usuario
+          user: this.user //se asgina email
         }
       }
       this.router.navigate(['/login'], navigationExtras);

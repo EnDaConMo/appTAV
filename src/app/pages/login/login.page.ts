@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { NavigationExtras, Router, CanActivate } from '@angular/router';
+import { ToastController, NavController } from '@ionic/angular';
+import { BdlocalService } from 'src/app/services/bdlocal.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,13 +17,12 @@ export class LoginPage implements OnInit {
   }
 
   field:string;
-  constructor(public toastController:ToastController, public router:Router) { }
+  constructor(public toastController:ToastController, public router:Router, public bdlocalservice: BdlocalService) { }
 
   ngOnInit() {
   }
 
   ingresar(){
-    console.log(this.user);
     if(this.validateModel(this.user)){
       this.presentToast('top', 'Bienvenido ' +this.user.usuario, 2000);
       let navigationExtras: NavigationExtras = {
@@ -29,6 +30,7 @@ export class LoginPage implements OnInit {
           user: this.user //se asgina usuario y contrseña
         }
       }
+      this.bdlocalservice.guardarUsuario(this.user.usuario, this.user.clave);
       this.router.navigate(['/home'], navigationExtras);
     }else{ 
       this.presentToast('middle', 'El campo '+this.field+' es requerido', 3000);
