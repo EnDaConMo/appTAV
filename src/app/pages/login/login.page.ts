@@ -22,9 +22,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  ingresar(){
+  async ingresar(){
     if(this.validateModel(this.user)){
-      this.presentToast('top', 'Bienvenido ' +this.user.usuario, 2000);
+      this.presentToast('top', 'Bienvenido ' +this.user.usuario, 2000, 'log-in-outline');
       let navigationExtras: NavigationExtras = {
         state:{
           user: this.user //se asgina usuario y contrseña
@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
       this.bdlocalservice.guardarUsuario(this.user.usuario, this.user.clave);
       this.router.navigate(['/home'], navigationExtras);
     }else{ 
-      this.presentToast('middle', 'El campo '+this.field+' es requerido', 3000);
+      this.presentToast('middle', 'El campo '+this.field+' es requerido', 3000, 'warning-outline');
     }
   }
 
@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
     return true;
  }
 
-  async presentToast(position : 'top' | 'bottom' | 'middle', message: string, duration?: number) {
+  async presentToast(position : 'top' | 'bottom' | 'middle', message: string, duration?: number, icon: string = '') {
     const toast = await this.toastController.create({
       message : message,
       duration : duration?duration:2000,
@@ -63,4 +63,6 @@ export class LoginPage implements OnInit {
     });
     await toast.present();
   }
+
+  
 }

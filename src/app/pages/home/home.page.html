@@ -1,76 +1,72 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-row>
-      <ion-title class="Register">
-        RegisterApp
-      </ion-title>
-      <ion-title class="DuocUC">
-        DuocUC
-      </ion-title>
-    </ion-row>
-    <ion-menu-button></ion-menu-button>
-  </ion-toolbar>
-</ion-header>
+<ion-menu contentId="main-content" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-title class="Register">
+          RegisterApp
+        </ion-title>
+        <ion-title class="DuocUC">
+          DuocUC
+        </ion-title>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-button tab="logoff" id="logoff" (click)="logoff()">
+      <ion-icon name="log-out-outline"></ion-icon>
+      <ion-label>Cerrar Sesión</ion-label>
+    </ion-button>
+  </ion-content>
+</ion-menu>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-row>
+        <ion-title class="Register">
+          RegisterApp
+        </ion-title>
+        <ion-title class="DuocUC">
+          DuocUC
+        </ion-title>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content [fullscreen]="true" [scrollEvents]="true">
+    <h1 *ngIf="data" >
+      Hola {{data.usuario}}
+    </h1>
+    <ion-card (click)="rotar()">
+      <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
+      <ion-card-header>
+        <ion-card-title>Registrar asistencia</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Abre la camara de celular y escanea el codigo QR para registrar tu asistencia.
+      </ion-card-content>
+    </ion-card>
 
-<ion-content [fullscreen]="true" [scrollEvents]="true">
-  <h1 *ngIf="data">
-    Hola {{data.usuario}}
-  </h1>
-  <ion-card (click)="rotar()">
-    <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
-    <ion-card-header>
-      <ion-card-title>Registrar asistencia</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Abre la camara de celular y escanea el codigo QR para registrar tu asistencia.
-    </ion-card-content>
-  </ion-card>
+    <ion-card (click)="parar()">
+      <img alt="Horario de clases" src="assets/images/horario.png">
+      <ion-card-header>
+        <ion-card-title>Horario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Revisa tu horario de clases.
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card (click)="parar()">
-    <img alt="Horario de clases" src="assets/images/horario.png">
-    <ion-card-header>
-      <ion-card-title>Horario</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Revisa tu horario de clases.
-    </ion-card-content>
-  </ion-card>
+    <ion-card>
+      <img src="assets/images/notas.png" alt="notas">
+      <ion-card-header>
+        <ion-card-title>Revisar calificaciones</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Revisa tus calificaciones.
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div>
 
-  <ion-card>
-    <img src="assets/images/notas.png" alt="notas">
-    <ion-card-header>
-      <ion-card-title>Revisar calificaciones</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Revisa tus calificaciones.
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-  </ion-card>
-</ion-content>
-
-<ion-toolbar>
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home" (click)="scrollTop()">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Inicio</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tab="logoff" id="logoff">
-        <ion-icon name="log-out-outline"></ion-icon>
-        <ion-label>Cerrar Sesión</ion-label>
-      </ion-tab-button>
-      <ion-alert trigger="logoff" class="logoffAlert" header="Seguro desea cerrar sesion?"
-        [buttons]="alertButtons"></ion-alert>
-    </ion-tab-bar>
-  </ion-tabs>
-</ion-toolbar>

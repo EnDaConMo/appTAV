@@ -23,6 +23,11 @@ export class HomePage {
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
+  toolbarChanged($event:any){
+    let direction = $event.detail.value;
+    this.router.navigate(['home/'+direction]);
+  }
+
   scrollTop() {
     this.content.scrollToTop(500);
   }
@@ -31,22 +36,6 @@ export class HomePage {
     this.router.navigate(['/login']);
   }
 
-  public alertButtons = [
-    {
-      text: 'Si',
-      cssClass: 'alertaSi',
-      handler: () => {
-        this.logoff();
-      }
-    },
-    {
-      text: 'No',
-      cssClass: 'alertaNo',
-      handler: () => {
-        console.log('No');
-      }
-    }
-  ]
 
   @ViewChildren(IonCard, { read: ElementRef }) cardElements: QueryList<ElementRef<HTMLIonCardElement>>;
 
