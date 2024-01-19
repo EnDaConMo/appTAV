@@ -12,11 +12,13 @@ import { BdlocalService } from 'src/app/services/bdlocal.service';
 export class HomePage {
 
   data: any
+  usuario: string = "";
   constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: 
-    AnimationController, private bdlocal: BdlocalService) {
+    AnimationController, public bdlocalservice: BdlocalService) {
     this.activatedRouter.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.data = this.router.getCurrentNavigation()?.extras.state?.["user"];
+        this.usuario = this.data.usuario;
       } else {
         this.router.navigate(['/login']);
       }
@@ -31,7 +33,7 @@ export class HomePage {
   }
 
   logoff() {
-    this.bdlocal.borrarUsuario;
+    this.bdlocalservice.eliminarUsuario(this.data);
     this.router.navigate(['/login']);
   }
 

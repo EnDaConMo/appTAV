@@ -8,8 +8,7 @@ import { Iusers } from '../interface/iusers';
 })
 export class BdlocalService {
 
-
-  usuario: Iusers[] = [];
+  usuarios: Iusers[] = [];
   private _storage: Storage | null = null;
 
   constructor(private storage: Storage, private toastController: ToastController) {
@@ -23,30 +22,30 @@ export class BdlocalService {
   }
 
   guardarUsuario(usuario: string, clave: string, email: string) {
-    const existe = this.usuario.find(m => m.strUsuario === usuario);
+    const existe = this.usuarios.find(m => m.strUsuario === usuario);
     if (!existe) {
-      this.usuario.unshift({
+      this.usuarios.unshift({
         strUsuario: usuario,
         strClave: clave,
         strEmail: email
       });
-      this._storage?.set('usuario', this.usuario);
+      this._storage?.set('usuario', this.usuarios);
       console.log('Usuario guardado en base local');
     }
   }
 
-  validarUsuario(usuario: string, clave: string) {
-    const existeU = this.usuario.find(m => m.strUsuario === usuario)
-    const existeC = this.usuario.find(m => m.strClave === clave)
-    if (existeU || existeC) {
+  validarEmail(email: string) {
+    const existeE = this.usuarios.find(m => m.strEmail === email)
+    if (existeE) {
       return true;
     }
     return false;
   }
 
-  validarEmail(email: string) {
-    const existeE = this.usuario.find(m => m.strEmail === email)
-    if (existeE) {
+  validarUsuario(usuario: string, clave: string) {
+    const existeU = this.usuarios.find(m => m.strUsuario === usuario)
+    const existeC = this.usuarios.find(m => m.strClave === clave)
+    if (existeU || existeC) {
       return true;
     }
     return false;
@@ -55,10 +54,15 @@ export class BdlocalService {
   async cargarUsuarios() {
     const usuarios = await this.storage.get('usuario');
     if (usuarios) {
-      this.usuario = usuarios;
+      this.usuarios = usuarios;
     }
   }
 
+  eliminarUsuario(usuario: string) {
+    this.usuarios.shift();
+    this._storage?.set('usuario', this.usuarios);
+    console.log('Usuario eliminado de base local');
+  }
 
   async presentToast(mensaje: string) {
     const toast = await this.toastController.create({
@@ -71,13 +75,9 @@ export class BdlocalService {
     toast.present();
   }
 
-  borrarUsuario(usuario: string) {
-    console.log('usuario eliminado');
-  }
-
   async borarBD() {
     await this._storage?.clear();
-    this.usuario = [];
-    console.log(this.usuario.length);
+    this.usuarios = [];
+    console.log(this.usuarios.length);
   }
 }

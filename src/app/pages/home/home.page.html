@@ -14,7 +14,7 @@
   <ion-content class="ion-padding">
     <ion-button tab="logoff" id="logoff" (click)="logoff()">
       <ion-icon name="log-out-outline"></ion-icon>
-      <ion-label>Cerrar Sesión</ion-label>
+      <ion-label>Borrar Usuario</ion-label>
     </ion-button>
   </ion-content>
 </ion-menu>
@@ -36,7 +36,7 @@
   </ion-header>
   <ion-content [fullscreen]="true" [scrollEvents]="true">
     <h1 *ngIf="data" >
-      Hola {{data.usuario}}
+      Hola {{this.usuario}}
     </h1>
     <ion-card (click)="rotar()">
       <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
