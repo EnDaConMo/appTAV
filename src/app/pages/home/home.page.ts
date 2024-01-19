@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angular';
+import { BdlocalService } from 'src/app/services/bdlocal.service';
 
 
 @Component({
@@ -9,12 +10,13 @@ import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angu
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   data: any
-  constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: AnimationController) {
+  constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: 
+    AnimationController, private bdlocal: BdlocalService) {
     this.activatedRouter.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.data = this.router.getCurrentNavigation()?.extras.state?.["user"];
-        
       } else {
         this.router.navigate(['/login']);
       }
@@ -23,16 +25,13 @@ export class HomePage {
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
-  toolbarChanged($event:any){
+  toolbarChanged($event: any) {
     let direction = $event.detail.value;
-    this.router.navigate(['home/'+direction]);
-  }
-
-  scrollTop() {
-    this.content.scrollToTop(500);
+    this.router.navigate(['home/' + direction]);
   }
 
   logoff() {
+    this.bdlocal.borrarUsuario;
     this.router.navigate(['/login']);
   }
 
