@@ -15,5 +15,6 @@ export class ServicerestService {
     headers: new HttpHeaders({ 'Content Type': 'application/json', 'Access-Control-Allow-Origin' : '*'}),
   };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
 }
