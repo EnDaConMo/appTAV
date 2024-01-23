@@ -6,6 +6,7 @@ import { Comp1Component } from 'src/app/components/comp1/comp1.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { RecuperarComponent } from 'src/app/components/recuperar/recuperar.component';
 
+
 const routes: Routes = [
   {
     path: '',

@@ -53,9 +53,9 @@ export class BdlocalService {
   }
 
   async cargarUsuarios() {
-    const usuarios = await this.storage.get('usuario');
-    if (usuarios) {
-      this.usuario = usuarios;
+    const tUsuarios = await this.storage.get('usuario');
+    if (this.usuario) {
+      this.usuario = tUsuarios;
     }
   }
 

@@ -12,6 +12,7 @@ import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
 })
 export class HomePage {
 
+
   data: any
   code: any
   constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: 
@@ -27,7 +28,7 @@ export class HomePage {
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
-  toolbarChanged($event: any) {
+  toolbarChanged($event:any){
     let direction = $event.detail.value;
     this.router.navigate(['home/' + direction]);
   }
