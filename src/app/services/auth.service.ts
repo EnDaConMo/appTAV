@@ -12,7 +12,7 @@ export class AuthService {
   usuarios: Iusers[] = [];
 
   constructor(public BdlocalService: BdlocalService) { }
-
+/*
   private estaLogeado: boolean = false;
 
 
@@ -20,5 +20,5 @@ export class AuthService {
     return this.estaLogeado;
   }
   
-  
+  */
 }

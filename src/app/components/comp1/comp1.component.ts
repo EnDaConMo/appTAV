@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-comp1',
@@ -9,35 +10,18 @@ import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angu
 })
 export class Comp1Component  implements OnInit {
 
-  constructor( private router:Router) { }
+  constructor(private modalController: ModalController, private router: Router) { }
 
   ngOnInit() {}
 
-  @ViewChild(IonContent, { static: false }) content: IonContent;
 
-  scrollTop() {
-    this.content.scrollToTop(500);
+  cerrarModal(){
+    this.modalController.dismiss(); 
   }
 
-  logoff() {
+  recuperarContraseña(){
+    this.modalController.dismiss();
     this.router.navigate(['/login']);
   }
-
-  public alertButtons = [
-    {
-      text: 'Si',
-      cssClass: 'alertaSi',
-      handler: () => {
-        this.logoff();
-      }
-    },
-    {
-      text: 'No',
-      cssClass: 'alertaNo',
-      handler: () => {
-        console.log('No');
-      }
-    }
-  ]
 
 }

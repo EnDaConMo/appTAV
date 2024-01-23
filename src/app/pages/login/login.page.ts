@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NavigationExtras, Router, CanActivate } from '@angular/router';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, ModalController } from '@ionic/angular';
+import { IonModal } from '@ionic/angular/common';
+import { OverlayEventDetail } from '@ionic/core/components';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
+import { Comp1Component } from 'src/app/components/comp1/comp1.component';
 
 
 @Component({
@@ -17,7 +20,7 @@ export class LoginPage implements OnInit {
   }
 
   field: string;
-  constructor(public toastController: ToastController, public router: Router, public bdlocalservice: BdlocalService) { }
+  constructor(public toastController: ToastController, public router: Router, public bdlocalservice: BdlocalService, private modalController: ModalController) { }
 
   ngOnInit() {
   }
@@ -71,5 +74,18 @@ export class LoginPage implements OnInit {
     await toast.present();
   }
 
+  async presentarModal() {
+    const modal = await this.modalController.create({
+      component: Comp1Component,
+    });
+    return await modal.present();
+  }
+
+  
+
+
 
 }
+
+
+

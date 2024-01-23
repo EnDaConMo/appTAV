@@ -1,12 +1,42 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-title class="Register">
-          RegisterApp
-        </ion-title>
-        <ion-title class="DuocUC">
-          DuocUC
-        </ion-title>
-      </ion-row>
-    </ion-toolbar>
-  </ion-header>
+<ion-modal>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-row>
+          <ion-title class="Register">
+            RegisterApp
+          </ion-title>
+          <ion-title class="DuocUC">
+            DuocUC
+          </ion-title>
+        </ion-row>
+      </ion-toolbar>
+    </ion-header>
+  
+    <ion-content [fullscreen]="true">
+      <ion-card>
+        <img alt="Logo DuocUC fondo azul" src="assets/images/duoc.png" class="imgDuoc" />
+        <ion-card-header>
+          <ion-card-title>Recuperar contraseña</ion-card-title>
+        </ion-card-header>
+  
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="text" [clearOnEdit]="true"></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col>
+              <ion-button color="tertiary" expand="block">Recuperar</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button color="tertiary" expand="block" (click)="cerrarModal()">Volver</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </ng-template>
+</ion-modal>

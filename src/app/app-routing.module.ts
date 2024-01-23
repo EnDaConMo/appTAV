@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
+import { Comp1Component } from './components/comp1/comp1.component';
 
 const routes: Routes = [
   {
@@ -10,30 +11,33 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'pages',
-    loadChildren: () => import('./pages/pages.module').then( m => m.PagesPageModule)
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesPageModule)
   },
   {
     path: 'login',
 
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'recuperar',
-    loadChildren: () => import('./pages/recuperar/recuperar.module').then( m => m.RecuperarPageModule)
+    loadChildren: () => import('./pages/recuperar/recuperar.module').then(m => m.RecuperarPageModule)
 
   },
   {
     path: 'registrar',
-    loadChildren: () => import('./pages/registrar/registrar.module').then( m => m.RegistrarPageModule)
+    loadChildren: () => import('./pages/registrar/registrar.module').then(m => m.RegistrarPageModule)
+  },
+  {
+    path: 'comp1',
+    component: Comp1Component
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/p404/p404.module').then( m => m.P404PageModule)
+    loadChildren: () => import('./pages/p404/p404.module').then(m => m.P404PageModule)
   },
 ];
 
