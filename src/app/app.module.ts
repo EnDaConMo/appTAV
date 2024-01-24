@@ -14,7 +14,7 @@ import { EmailjsService } from './services/emailjs.service';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot({ rippleEffect: false, mode: 'md'}), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, ServicerestService, AuthGuard, BarcodeScanner, EmailjsService],
   bootstrap: [AppComponent],
 })
