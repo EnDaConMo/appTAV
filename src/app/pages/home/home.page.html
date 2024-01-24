@@ -36,7 +36,7 @@
   </ion-header>
   <ion-content [fullscreen]="true" [scrollEvents]="true">
     <h1 *ngIf="data" >
-      Hola {{this.usuario}}
+      Hola {{this.data.usuario}}
     </h1>
     <ion-card (click)="scannerQr()">
       <img alt="Celular escaneado codigo QR" src="assets/images/scanqr.png" />
