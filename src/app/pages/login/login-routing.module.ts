@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LoginPage,
     children: [
       {
-        path: 'comp1',
+        path: 'recuperar',
         component: Comp1Component,
       }
     ]

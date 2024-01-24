@@ -28,11 +28,6 @@ export class HomePage {
 
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
-  toolbarChanged($event:any){
-    let direction = $event.detail.value;
-    this.router.navigate(['home/' + direction]);
-  }
-
   logoff() {
     this.bdlocal.borrarUsuario;
     this.router.navigate(['/login']);
@@ -44,7 +39,7 @@ export class HomePage {
   public animation: Animation;
 
   ngAfterViewInit() {
-
+    /*
     this.animation = this.animationCtrl
       .create()
       .addElement(this.cardElements.get(0)!.nativeElement)
@@ -55,6 +50,7 @@ export class HomePage {
         { offset: 0, transform: 'scale(1) rotate(360deg)' },
         { offset: 1, transform: 'scale(1) rotate(0) ' },
       ]);
+      */
   }
 
   rotar() {
@@ -74,6 +70,7 @@ export class HomePage {
     })
   }
 
+  
 
 
 
