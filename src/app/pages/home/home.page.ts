@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IonContent, Animation, AnimationController, IonCard } from '@ionic/angular';
 import { BdlocalService } from 'src/app/services/bdlocal.service';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { EmailjsService } from 'src/app/services/emailjs.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class HomePage {
   data: any
   code: any
   constructor(private activatedRouter: ActivatedRoute, private router: Router, private animationCtrl: 
-    AnimationController, private bdlocal: BdlocalService, private barcodeScanner: BarcodeScanner) {
+    AnimationController, private bdlocal: BdlocalService, private barcodeScanner: BarcodeScanner, private emailjsService: EmailjsService) {
     this.activatedRouter.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation()?.extras.state) {
         this.data = this.router.getCurrentNavigation()?.extras.state?.["user"];
@@ -60,7 +61,7 @@ export class HomePage {
   parar() {
     this.animation.stop();
   }
-
+/*
   scannerQr(){
     this.barcodeScanner.scan().then(barcodeData => {
       this.code = barcodeData.text
@@ -70,8 +71,11 @@ export class HomePage {
     })
   }
 
-  
-
+  */
+  scannerQr(){
+    this.emailjsService.sendEmail('service_3v6h1jc', 'template_zytgk38');
+    console.log("enviado");
+  }
 
 
 }

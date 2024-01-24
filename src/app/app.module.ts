@@ -9,12 +9,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicerestService } from './services/servicerest.service';
 import { AuthGuard } from './guards/auth.guard';
 import { BarcodeScanner } from '@awesome-cordova-plugins/barcode-scanner/ngx';
+import { EmailjsService } from './services/emailjs.service';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, ServicerestService, AuthGuard, BarcodeScanner],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, ServicerestService, AuthGuard, BarcodeScanner, EmailjsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

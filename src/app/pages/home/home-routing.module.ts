@@ -8,13 +8,6 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-
-    children: [
-      {
-        path: 'comp1',
-        component: Comp1Component
-      }
-    ]
   }
 ];
 
